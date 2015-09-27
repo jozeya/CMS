@@ -21,6 +21,10 @@ db = SQLAlchemy(app)
 Bower(app)
 
 # Sample HTTP error handling
+@app.route('/')
+def Inicio():
+	return render_template("base.html")
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
