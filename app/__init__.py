@@ -22,8 +22,9 @@ Bower(app)
 
 # Sample HTTP error handling
 @app.route('/')
-def Inicio():
-	return render_template("base.html")
+@app.route('/index')
+def index():
+	return render_template("index.html")
 
 @app.errorhandler(404)
 def not_found(error):

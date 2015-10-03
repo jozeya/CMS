@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        {% if user %}
+		<title> CMS - Bienvenido, {{ user }}</title>
+        {% else %}
+        <title> CMS - Bienvenido</title>
+        {% endif %}
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+		<link rel="shortcut icon"  href="{{ url_for('static', filename='favicon.ico') }}">
+
+		<!-- Custom CSS -->
+	    <link href="{{ url_for('static', filename='css/simple-sidebar.css') }}" rel="stylesheet">
+
+	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+		</head>
+	<body>
+		<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Account
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Item II</a>
+                </li>
+                <li>
+                    <a href="#">Item III</a>
+                </li>
+                <li>
+                    <a href="#">Item IV</a>
+                </li>
+                <li>
+                    <a href="#">Item V</a>
+                </li>
+                <li>
+                    <a href="#">Item VI</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% if user%}
+                        <h1>Bienvenido, {{ user }}</h1>
+                        {% else %}
+                        <h1>Bienvenido, Invitado</h1>
+                        {% endif %}
+                        <p align="center"><img src="{{ url_for('static', filename='images/prin.png') }}"></p>
+                        <p align="justify">
+                            Administración del almacenamiento de contenidos (CSM) es una técnica para la evolución de la tecnología de archivo de medios tradicionales utilizada por los propietarios de contenidos y empresas de medios para almacenar y proteger los activos valiosos medios basados en archivos. Enfoque de soluciones CSM en la gestión de activo de activos de contenido y medios de comunicación sin importar el formato, tipo y procedencia, interfaces entre dispositivos de origen/destino contenido propietario y cualquier formato y tipo de materias primas tecnología centrada en almacenamiento de información. Estos archivos multimedia digitales (o activos) más a menudo contienen video, pero en casos más raros pueden todavía ser imágenes o sonido. Un sistema CSM se puede dirigir manualmente pero se dirige más a menudo por los sistemas de nivel superiores, que pueden incluir la gestión de activos de los medios de comunicación (MAM), automatización o tráfico.
+                        </p>
+                        <p>Tienes dudas del funcionamiento, podemos guiarte.</p>
+                        <a href="#help" class="btn btn-default" >Ayuda</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+	</body>
+</html>
