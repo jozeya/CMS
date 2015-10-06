@@ -14,7 +14,6 @@ from app import db
 from app.authentication.forms import LoginForm
 from app.authentication.models import User
 
-
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 

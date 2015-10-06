@@ -1,1 +1,26 @@
-<h1>Hola Mundillo</h1>
+<html>
+	<head>
+	{% if title %}
+		<title> {{ title }} - blog de prueba</title>
+	{% else %}
+		<title>Bienvenido Invitado</title>
+	{% endif %}	
+	</head>
+	<body>
+		<div>MicroBlog: <a href="{{ url_for('practice') }}">practice</a> 
+		{% if g.user.is_authenticated %} 
+		| <a href="{{ url_for('logout') }}">Logout</a></div>
+		{% endif %}
+		<hr>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+					  <li> {{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+		{% block content %} {% endblock %}
+	</body>
+</html>
