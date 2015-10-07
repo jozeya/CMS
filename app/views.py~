@@ -27,7 +27,7 @@ def recover_pass():
 		if user:
 			token = user.get_token()
 			print token
-			url = 'http://0.0.0.0:8080/change_pass?token=' + token
+			url = 'http://192.168.1.41:8080/change_pass?token=' + token
 			send_mail(email,url)
 			 
 			return render_template("confirm.html",email=email)
