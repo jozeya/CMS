@@ -21,13 +21,6 @@ db = SQLAlchemy(app)
 # Initiate Bower
 Bower(app)
 
-
-# Sample HTTP error handling
-#@app.route('/')
-#@app.route('/index')
-#def index():
-#	return render_template("index.html")
-
 #@app.errorhandler(404)
 #def not_found(error):
 #    return render_template('404.html'), 404
@@ -51,15 +44,4 @@ app.config['MAIL_USERNAME'] = 'pruebas.cms@asacoop.com'
 app.config['MAIL_PASSWORD'] = 'admin1234'
 mail = Mail(app)
 
-import os
-from flask.ext.login import LoginManager
-from flask.ext.openid import OpenID
-from config import BASE_DIR
-
-lm = LoginManager()
-lm.init_app(app)
-lm.login_view = 'login'
-oid = OpenID(app, os.path.join(BASE_DIR, 'tmp'))
-
 from app import views,models
-from app.authentication import controllers 

@@ -10,9 +10,9 @@
 		{{ form.hidden_tag() }}
 		<p>
 			Digite su Nueva Contraseña:<br>
-			{{ form.newpass1(size = 48) }}<br><br>
+			{{ form.password(size = 48) }}<br><br>
 			Rescriba su Contraseña:<br>
-			{{ form.newpass2(size = 48) }}<br><br>
+			{{ form.confirm(size = 48) }}<br><br>
 			{% for error in form.errors %}
 				<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}<br>
