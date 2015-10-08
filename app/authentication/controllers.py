@@ -32,3 +32,22 @@ def signin():
         flash('Wrong email or password', 'error-message')
 
     return render_template("authentication/signin.html", form=form)
+
+@mod_auth.route('/recover_pass', methods=('GET','POST'))
+def recover_pass():
+    form = RecoverPassForm()
+
+    if form.validate_on_submit():
+        email = form.email.data
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            token = user.get_token()
+            print token
+            url = 'http://0.0.0.0:8080/change_pass?token=' + token
+            send_mail(email,url)
+             
+            return render_template("confirm.html",email=email)
+
+
+    return render_template("recover_pass.html", form=form)
