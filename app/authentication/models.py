@@ -1,5 +1,5 @@
 from app import db
-
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 class Base(db.Model):
 
@@ -31,3 +31,32 @@ class User(Base):
 
     def __repr__(self):
         return '<User %r>' % (self.name)
+
+
+
+    def get_token(self, expiration=1800):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'user': self.id}).decode('utf-8')
+
+
+    @staticmethod
+    def verify_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        id = data.get('user')
+        if id:
+            return User.query.get(id)
+        return None
+
+
+    def get_id(self):
+        try:
+            return unicode(self.id)  # python 2
+        except NameError:
+            return str(self.id)  # python 3
+
+
+
